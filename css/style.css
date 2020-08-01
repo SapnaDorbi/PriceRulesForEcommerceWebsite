@@ -1,0 +1,13 @@
+fieldset {
+  width: 650px;
+}
+
+th {
+  padding: 10px;
+}
+
+tfoot,
+td,
+button {
+  padding: 2px;
+}
