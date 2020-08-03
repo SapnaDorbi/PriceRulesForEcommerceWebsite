@@ -161,16 +161,50 @@ var UTIL = (function (domU) {
     false
   );
 
-  document.querySelector("#price-rules").addEventListener(
-    "click",
-    function (e) {
+  document
+    .querySelector("#price-rules")
+    .addEventListener("click", function (e) {
       if (e.target.className == "delete-row") {
         e.target.parentNode.parentNode.remove();
         // e.stopPropagation();
       }
-    },
-    false
-  );
+    });
+
+  // Event: Add PriceRules
+  document
+    .getElementById("price-rules-form")
+    .addEventListener("submit", (e) => {
+      //stop the page reloading
+      e.preventDefault();
+
+      let priceRuleForm = e.target;
+      let formData = new FormData(priceRuleForm);
+
+      //add more things that were not in the form
+      // formData.append("api-key", "myApiKey");
+
+      //look at all the contents
+      // for (let key of formData.keys()) {
+      //   console.log(key, formData.get(key));
+      // }
+
+      let obj = {};
+      let rowWiseObj = {};
+      let counter = 0;
+      //convert formData to json
+      for (let key of formData.keys()) {
+        let rows = key.substring(0, key.indexOf("["));
+        console.log(key.match(/\[(.*)\]/g), "dev");
+        if (rows != counter) {
+          counter++;
+        } else {
+          obj[rows] = formData.get(key);
+          obj[key] = obj[rows];
+        }
+      }
+
+      // console.log(obj, "check obj");
+    });
 
   // window.addEventListener("DOMContentLoaded", function () {
   //   var form = document.getElementById("form-id");
