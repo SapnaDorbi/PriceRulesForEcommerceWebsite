@@ -193,17 +193,40 @@ var UTIL = (function (domU) {
       let counter = 0;
       //convert formData to json
       for (let key of formData.keys()) {
-        let rows = key.substring(0, key.indexOf("["));
-        console.log(key.match(/\[(.*)\]/g), "dev");
-        if (rows != counter) {
-          counter++;
-        } else {
-          obj[rows] = formData.get(key);
-          obj[key] = obj[rows];
-        }
-      }
+        let rowNumber = key.substring(0, key.indexOf("["));
+        let nameField = key.match(/\[(.*)\]/g);
 
-      // console.log(obj, "check obj");
+        // for (let k = 0; k < 5; k += 5) {
+
+        // console.log(formData.get(key), "dev...");
+
+        if (counter == rowNumber) {
+          rowWiseObj[nameField] = formData.get(key);
+          obj[counter] = rowWiseObj;
+        } else {
+          counter++;
+          rowWiseObj[nameField] = formData.get(key);
+          obj[counter] = rowWiseObj;
+        }
+
+        console.log(obj, "else...obj");
+
+        // rowWiseObj
+        // let rowNumber = key.substring(0, key.indexOf("["));
+        // }
+        // console.log(rowWiseObj, "in");
+        // obj[counter] = rowWiseObj;
+        // counter++;
+
+        // if (rowNumber != counter) {
+        //   counter++;
+        // } else {
+        // rowWiseObj[key] = formData.get(key);
+        // obj[key] = rowWiseObj;
+        // }
+      }
+      // console.log(obj, "dev...obj");
+      // console.log(rowWiseObj, "check out");
     });
 
   // window.addEventListener("DOMContentLoaded", function () {
