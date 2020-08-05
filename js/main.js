@@ -196,10 +196,6 @@ var UTIL = (function (domU) {
         let rowNumber = key.substring(0, key.indexOf("["));
         let nameField = key.match(/\[(.*)\]/g);
 
-        // for (let k = 0; k < 5; k += 5) {
-
-        // console.log(formData.get(key), "dev...");
-
         if (counter == rowNumber) {
           rowWiseObj[nameField] = formData.get(key);
           obj[counter] = rowWiseObj;
@@ -210,20 +206,6 @@ var UTIL = (function (domU) {
         }
 
         console.log(obj, "else...obj");
-
-        // rowWiseObj
-        // let rowNumber = key.substring(0, key.indexOf("["));
-        // }
-        // console.log(rowWiseObj, "in");
-        // obj[counter] = rowWiseObj;
-        // counter++;
-
-        // if (rowNumber != counter) {
-        //   counter++;
-        // } else {
-        // rowWiseObj[key] = formData.get(key);
-        // obj[key] = rowWiseObj;
-        // }
       }
       // console.log(obj, "dev...obj");
       // console.log(rowWiseObj, "check out");
