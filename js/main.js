@@ -196,18 +196,23 @@ var UTIL = (function (domU) {
         let rowNumber = key.substring(0, key.indexOf("["));
         let nameField = key.match(/\[(.*)\]/g);
 
+        // console.log(counter, rowNumber, "cr dev");
+
         if (counter == rowNumber) {
-          rowWiseObj[nameField] = formData.get(key);
           obj[counter] = rowWiseObj;
+          obj[counter][nameField] = formData.get(key);
         } else {
           counter++;
-          rowWiseObj[nameField] = formData.get(key);
           obj[counter] = rowWiseObj;
+          obj[counter][nameField] = formData.get(key);
         }
 
-        console.log(obj, "else...obj");
+        // obj[counter] = rowWiseObj;
+
+        // console.log(obj, "dev...obj");
       }
-      // console.log(obj, "dev...obj");
+      // obj[counter] = rowWiseObj;
+      console.log(obj, "dev...obj");
       // console.log(rowWiseObj, "check out");
     });
 
