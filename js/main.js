@@ -177,8 +177,9 @@ var UTIL = (function (domU) {
       //stop the page reloading
       e.preventDefault();
 
-      let priceRuleForm = e.target;
-      let formData = new FormData(priceRuleForm);
+      /*Another way of using FormData start*/
+      // let priceRuleForm = e.target;
+      // let formData = new FormData(priceRuleForm);
 
       //add more things that were not in the form
       // formData.append("api-key", "myApiKey");
@@ -187,33 +188,22 @@ var UTIL = (function (domU) {
       // for (let key of formData.keys()) {
       //   console.log(key, formData.get(key));
       // }
+      /*Another way of using FormData end*/
 
-      let obj = {};
-      let rowWiseObj = {};
-      let counter = 0;
-      //convert formData to json
-      for (let key of formData.keys()) {
-        let rowNumber = key.substring(0, key.indexOf("["));
-        let nameField = key.match(/\[(.*)\]/g);
+      // console.log(document.querySelector("form"), "fjksjhfdk");
 
-        // console.log(counter, rowNumber, "cr dev");
-
-        if (counter == rowNumber) {
-          obj[counter] = rowWiseObj;
-          obj[counter][nameField] = formData.get(key);
-        } else {
-          counter++;
-          obj[counter] = rowWiseObj;
-          obj[counter][nameField] = formData.get(key);
+      const formData = new FormData(document.querySelector("form"));
+      // console.log(formData, "dev");
+      const object = {};
+      formData.forEach((value, key) => {
+        // console.log(key, value, "kv");
+        const [, index, attr] = /(^\d+)\[(.*?)\]/.exec(key);
+        if (!(index in object)) {
+          object[index] = {};
         }
-
-        // obj[counter] = rowWiseObj;
-
-        // console.log(obj, "dev...obj");
-      }
-      // obj[counter] = rowWiseObj;
-      console.log(obj, "dev...obj");
-      // console.log(rowWiseObj, "check out");
+        object[index][attr] = value;
+      });
+      console.log(object);
     });
 
   // window.addEventListener("DOMContentLoaded", function () {
