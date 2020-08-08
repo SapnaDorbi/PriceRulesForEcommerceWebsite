@@ -190,38 +190,17 @@ var UTIL = (function (domU) {
       // }
       /*Another way of using FormData end*/
 
-      // console.log(document.querySelector("form"), "fjksjhfdk");
-
       const formData = new FormData(document.querySelector("form"));
-      // console.log(formData, "dev");
       const object = {};
       formData.forEach((value, key) => {
-        // console.log(key, value, "kv");
         const [, index, attr] = /(^\d+)\[(.*?)\]/.exec(key);
         if (!(index in object)) {
           object[index] = {};
         }
         object[index][attr] = value;
       });
-      console.log(object);
+
+      //Add price to local storage
+      Store.addPriceRules(object);
     });
-
-  // window.addEventListener("DOMContentLoaded", function () {
-  //   var form = document.getElementById("form-id");
-  //   document.getElementById("your-id").addEventListener("click", function () {
-  //     var checkErrors = Array.prototype.slice
-  //       .call(document.getElementsByClassName("has-error"))
-  //       .filter(function (x) {
-  //         if (x.innerHTML) {
-  //           return x.innerHTML;
-  //         }
-  //       });
-
-  //     if (checkErrors.length == 0) {
-  //       form.submit();
-  //     } else {
-  //       alert("please check your erros");
-  //     }
-  //   });
-  // });
 })(UTIL || {});

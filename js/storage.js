@@ -1,8 +1,3 @@
-//Price Rules: Represent a price rule
-class PriceRule {
-  // constructor(ruleNumber, minPrice, maxPrice, priceAction, applyAs)
-}
-
 //Store Class: Handle Storage
 class Store {
   static getPriceRules() {
@@ -17,8 +12,8 @@ class Store {
 
   static addPriceRules(priceRule) {
     const priceRules = Store.getPriceRules();
-    priceRules.push(priceRules);
-    localStorage.setITem("priceRules", JSON.stringify(priceRules));
+    priceRules.push(priceRule);
+    localStorage.setItem("priceRules", JSON.stringify(priceRules));
   }
 
   static removePriceRules(priceRuleNumber) {
