@@ -33,13 +33,23 @@ class Store {
 class UI {
   static displaySavePriceRules() {
     const savedPriceRules = Store.getPriceRules();
-    console.log(savedPriceRules, "check sPr");
-    savedPriceRules.forEach((savedPriceRule) =>
-      UI.addPriceRuleToList(savedPriceRule)
-    );
+    Object.values(savedPriceRules[0]).forEach((savedPriceRule) => {
+      UI.addPriceRuleToList(savedPriceRule);
+    });
   }
 
-  static addPriceRuleToList(savedPriceRule) {}
+  static addPriceRuleToList(savedPriceRule, index) {
+    const price_rule = document.querySelector("#saved-price-rules");
+    const row = document.createElement("tr");
+
+    row.innerHTML = `<td>${savedPriceRule.min_price}</td>
+      <td>${savedPriceRule.max_price}</td>
+      <td>${savedPriceRule.price_action}</td>
+      <td>${savedPriceRule.apply_as}</td>
+      <td>${savedPriceRule.adjustment_amount}</td>`;
+
+    price_rule.append(row);
+  }
 }
 
 //Event: Display saved price rules
