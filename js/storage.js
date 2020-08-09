@@ -28,3 +28,19 @@ class Store {
     localStorage.setItem("priceRules", JSON.stringify(priceRules));
   }
 }
+
+// UI Class: Handle UI Of Saved Data
+class UI {
+  static displaySavePriceRules() {
+    const savedPriceRules = Store.getPriceRules();
+    console.log(savedPriceRules, "check sPr");
+    savedPriceRules.forEach((savedPriceRule) =>
+      UI.addPriceRuleToList(savedPriceRule)
+    );
+  }
+
+  static addPriceRuleToList(savedPriceRule) {}
+}
+
+//Event: Display saved price rules
+document.addEventListener("DOMContentLoaded", UI.displaySavePriceRules);

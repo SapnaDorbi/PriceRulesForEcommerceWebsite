@@ -20,15 +20,15 @@ var UTIL = (function (domU) {
   });
 
   var createHtML = function (index) {
-    var tbody = document.getElementsByTagName("tbody")[0];
+    var tbody = document.getElementById("price-rules");
+    console.log(tbody, "check tbody");
     var row = document.createElement("tr");
-    var th = document.getElementsByTagName("th"),
+    var th = document.querySelectorAll(".add-price-rule-heading"),
       thLength = th.length;
 
     for (var i = 0; i < thLength; i++) {
       var column = document.createElement("td");
-
-      if (th[i].className == "input-type") {
+      if (th[i].className.includes("input-type")) {
         var input = document.createElement("input");
         input.name = index + "[" + th[i].id + "]";
         input.className = th[i].id + " form-control";
@@ -38,7 +38,7 @@ var UTIL = (function (domU) {
 
         column.appendChild(input);
         column.appendChild(div);
-      } else if (th[i].className == "select-type") {
+      } else if (th[i].className.includes("select-type")) {
         var select = document.createElement("select");
         select.name = index + "[" + th[i].id + "]";
         select.className = "form-control";
