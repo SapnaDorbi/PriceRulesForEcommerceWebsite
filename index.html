@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <title>Price Rules For Ecommerce Website</title>
     <script src="js/main.js" defer></script>
@@ -11,72 +19,110 @@
       <h1 class="Products_style">Price Rules For Ecommerce Website</h1>
       <div class="clear"></div>
     </div>
-
-    <fieldset>
-      <legend>Add Price Rules</legend>
-      <form id="price-rules-form">
-        <table class="table table-striped table-bordered">
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Add Price Rule</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Saved Price Rule</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <form id="price-rules-form">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th
+                  scope="col"
+                  class="input-type add-price-rule-heading"
+                  id="min_price"
+                >
+                  Min Price
+                </th>
+                <th
+                  scope="col"
+                  class="input-type add-price-rule-heading"
+                  id="max_price"
+                >
+                  Max Price
+                </th>
+                <th
+                  scope="col"
+                  class="select-type add-price-rule-heading"
+                  id="price_action"
+                >
+                  Price Action
+                </th>
+                <th
+                  scope="col"
+                  class="select-type add-price-rule-heading"
+                  id="apply_as"
+                >
+                  Apply As
+                </th>
+                <th
+                  scope="col"
+                  class="input-type add-price-rule-heading"
+                  id="adjustment_amount"
+                >
+                  Adjustment Amount
+                </th>
+                <th
+                  scope="col"
+                  class="button-type add-price-rule-heading"
+                  id="delete-btn"
+                >
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody id="price-rules"></tbody>
+            <tfoot>
+              <tr>
+                <td>
+                  <button type="button" onclick="" class="add-rules">
+                    Add Rule
+                  </button>
+                </td>
+                <td colspan="5">
+                  <button id="your-id" type="submit">
+                    Save
+                  </button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </form>
+        <!-- Table for saved price rule -->
+        <table class="table table-bordered" style="display: none;">
           <thead>
             <tr>
-              <th class="input-type add-price-rule-heading" id="min_price">
+              <th scope="col" class="input-type" id="saved_min_price">
                 Min Price
               </th>
-              <th class="input-type add-price-rule-heading" id="max_price">
+              <th scope="col" class="input-type" id="saved_max_price">
                 Max Price
               </th>
-              <th class="select-type add-price-rule-heading" id="price_action">
+              <th scope="col" class="select-type" id="saved_price_action">
                 Price Action
               </th>
-              <th class="select-type add-price-rule-heading" id="apply_as">
+              <th scope="col" class="select-type" id="saved_apply_as">
                 Apply As
               </th>
-              <th
-                class="input-type add-price-rule-heading"
-                id="adjustment_amount"
-              >
+              <th scope="col" class="input-type" id="saved_adjustment_amount">
                 Adjustment Amount
               </th>
-              <th class="button-type add-price-rule-heading" id="delete-btn">
+              <th scope="col" class="button-type" id="saved_delete-btn">
                 Action
               </th>
             </tr>
           </thead>
-          <tbody id="price-rules"></tbody>
-          <tfoot>
-            <tr>
-              <td>
-                <button type="button" onclick="" class="add-rules">
-                  Add Rule
-                </button>
-              </td>
-              <td colspan="5">
-                <button id="your-id" type="submit">
-                  Save
-                </button>
-              </td>
-            </tr>
-          </tfoot>
+          <tbody id="saved-price-rules"></tbody>
         </table>
-      </form>
-    </fieldset>
-
-    <fieldset>
-      <legend>Saved Price Rule</legend>
-      <table class="table table-striped mt-5">
-        <thead>
-          <tr>
-            <th class="input-type" id="saved_min_price">Min Price</th>
-            <th class="input-type" id="saved_max_price">Max Price</th>
-            <th class="select-type" id="saved_price_action">Price Action</th>
-            <th class="select-type" id="saved_apply_as">Apply As</th>
-            <th class="input-type" id="saved_adjustment_amount">
-              Adjustment Amount
-            </th>
-            <th class="button-type" id="saved_delete-btn">Action</th>
-          </tr>
-        </thead>
-        <tbody id="saved-price-rules"></tbody>
-      </table>
-    </fieldset>
+      </div>
+    </div>
   </body>
 </html>

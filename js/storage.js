@@ -47,7 +47,7 @@ class UI {
       <td>${savedPriceRule.price_action}</td>
       <td>${savedPriceRule.apply_as}</td>
       <td>${savedPriceRule.adjustment_amount}</td>
-      <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`;
+      <td><a href="#" class="error btn-sm delete">X</a></td>`;
 
     price_rule.append(row);
   }
