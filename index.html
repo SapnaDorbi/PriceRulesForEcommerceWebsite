@@ -35,6 +35,9 @@
           <table class="table table-bordered">
             <thead>
               <tr>
+                <th scope="col" class="add-price-rule-heading rule-number">
+                  Rule Number
+                </th>
                 <th
                   scope="col"
                   class="input-type add-price-rule-heading"
@@ -82,14 +85,16 @@
             <tbody id="price-rules"></tbody>
             <tfoot>
               <tr>
-                <td>
-                  <button type="button" onclick="" class="add-rules">
-                    Add Rule
+                <td colspan="7">
+                  <button
+                    type="button"
+                    onclick=""
+                    class="add-rules btn-lg btn btn-outline-primary"
+                  >
+                    Add Rule(s)
                   </button>
-                </td>
-                <td colspan="5">
-                  <button id="your-id" type="submit">
-                    Save
+                  <button class="btn-lg btn btn-outline-success" type="submit">
+                    Save Rule(s)
                   </button>
                 </td>
               </tr>

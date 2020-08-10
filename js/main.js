@@ -52,14 +52,21 @@ var UTIL = (function (domU) {
           select.appendChild(options);
         }
         column.appendChild(select);
+      } else if (th[i].className.includes("rule-number")) {
+        var ruleNumber = document.createElement("th");
+        ruleNumber.innerHTML = index;
       } else {
         var button = document.createElement("button");
         button.innerHTML = "X";
         button.type = "button";
-        button.className = "delete-row";
+        button.className = "delete-row btn btn-danger";
         column.appendChild(button);
       }
-      row.appendChild(column);
+      if (th[i].className.includes("rule-number")) {
+        row.append(ruleNumber);
+      } else {
+        row.appendChild(column);
+      }
 
       hiddenRow = document.createElement("input");
       hiddenRow.type = "hidden";
@@ -164,7 +171,10 @@ var UTIL = (function (domU) {
   document
     .querySelector("#price-rules")
     .addEventListener("click", function (e) {
-      if (e.target.className == "delete-row") {
+      if (e.target.className.includes("delete-row")) {
+        console.log(e.target, "check..target");
+        e.target.parentNode.parentNode.nextSibling.remove();
+        e.target.parentNode.parentNode.nextSibling.remove();
         e.target.parentNode.parentNode.remove();
         // e.stopPropagation();
       }
