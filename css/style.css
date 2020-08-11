@@ -1,20 +1,4 @@
-fieldset {
-  /* margin: 0;
-  padding: 0;
-  border: 0; */
+.custom {
+  float: left;
+  margin: 10px;
 }
-
-fieldset {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-th {
-  padding: 10px;
-}
-
-/* tfoot,
-td,
-button {
-  padding: 2px;
-} */
