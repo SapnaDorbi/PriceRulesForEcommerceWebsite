@@ -172,11 +172,27 @@ var UTIL = (function (domU) {
     .querySelector("#price-rules")
     .addEventListener("click", function (e) {
       if (e.target.className.includes("delete-row")) {
-        console.log(e.target, "check..target");
         e.target.parentNode.parentNode.nextSibling.remove();
         e.target.parentNode.parentNode.nextSibling.remove();
         e.target.parentNode.parentNode.remove();
         // e.stopPropagation();
+      }
+    });
+
+  document
+    .querySelector(".card-header")
+    .addEventListener("click", function (e) {
+      if (e.target.innerHTML == "Saved Price Rule") {
+        document.getElementById("save-price-rule-table").style.display =
+          "block";
+        document.getElementById("add-price-rule-table").style.display = "none";
+        console.log(e.target.parentNode, typeof e.target.parentNode, "hteef");
+        // e.target.parentNode.previousSibling.firstChild.classList.remove(
+        //   "active"
+        // );
+        e.target.classList.add("active");
+      }
+      if (e.target.innerHTML == "Add Price Rule") {
       }
     });
 
