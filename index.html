@@ -31,8 +31,8 @@
         </ul>
       </div>
       <div class="card-body">
-        <table class="table table-bordered" id="add-price-rule-table">
-          <form id="price-rules-form">
+        <form id="price-rules-form">
+          <table class="table table-bordered" id="add-price-rule-table">
             <thead>
               <tr>
                 <th scope="col" class="add-price-rule-heading rule-number">
@@ -75,7 +75,7 @@
                 </th>
                 <th
                   scope="col"
-                  class="button-type add-price-rule-heading"
+                  class="del-btn add-price-rule-heading"
                   id="delete-btn"
                 >
                   Action
@@ -102,8 +102,8 @@
                 </td>
               </tr>
             </tfoot>
-          </form>
-        </table>
+          </table>
+        </form>
 
         <!-- Table for saved price rule -->
         <table
@@ -113,7 +113,7 @@
         >
           <thead>
             <tr>
-              <th scope="col" class="add-price-rule-heading rule-number">
+              <th scope="col" class="saved-price-rule-heading rule-number">
                 Rule Number
               </th>
               <th scope="col" class="input-type" id="saved_min_price">

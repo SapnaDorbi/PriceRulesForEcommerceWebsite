@@ -186,13 +186,18 @@ var UTIL = (function (domU) {
         document.getElementById("save-price-rule-table").style.display =
           "block";
         document.getElementById("add-price-rule-table").style.display = "none";
-        console.log(e.target.parentNode, typeof e.target.parentNode, "hteef");
-        // e.target.parentNode.previousSibling.firstChild.classList.remove(
-        //   "active"
-        // );
+        e.target.parentNode.previousElementSibling.children[0].classList.remove(
+          "active"
+        );
         e.target.classList.add("active");
       }
       if (e.target.innerHTML == "Add Price Rule") {
+        document.getElementById("add-price-rule-table").style.display = "block";
+        document.getElementById("save-price-rule-table").style.display = "none";
+        e.target.parentNode.nextElementSibling.children[0].classList.remove(
+          "active"
+        );
+        e.target.classList.add("active");
       }
     });
 
@@ -225,7 +230,6 @@ var UTIL = (function (domU) {
         }
         object[index][attr] = value;
       });
-
       //Add price to local storage
       Store.addPriceRules(object);
     });

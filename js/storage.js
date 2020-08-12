@@ -33,9 +33,11 @@ class Store {
 class UI {
   static displaySavePriceRules() {
     const savedPriceRules = Store.getPriceRules();
-    Object.values(savedPriceRules[0]).forEach((savedPriceRule) => {
-      UI.addPriceRuleToList(savedPriceRule);
-    });
+    if (savedPriceRules.length > 0) {
+      Object.values(savedPriceRules[0]).forEach((savedPriceRule) => {
+        UI.addPriceRuleToList(savedPriceRule);
+      });
+    }
   }
 
   static addPriceRuleToList(savedPriceRule, index) {
