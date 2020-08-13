@@ -19,9 +19,11 @@ class Store {
   static removePriceRules(priceRuleNumber) {
     const priceRules = Store.getPriceRules();
 
+    console.log(priceRules, "check pricerule...");
+
     priceRules.forEach((priceRule, index) => {
       if (priceRule.priceRuleNumber == priceRuleNumber) {
-        priceRuleNumber.splice(index, 1);
+        // priceRuleNumber.splice(index, 1);
       }
     });
 
@@ -69,4 +71,9 @@ document.addEventListener("DOMContentLoaded", UI.displaySavePriceRules);
 document.querySelector("#saved-price-rules").addEventListener("click", (e) => {
   //Remove a saved price rule from UI
   UI.deletePriceRule(e.target);
+
+  //Remove a saved price rule from stroage
+  Store.removePriceRules(
+    e.target.parentNode.parentNode.children[0].textContent
+  );
 });
