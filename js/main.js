@@ -184,7 +184,7 @@ var UTIL = (function (domU) {
     .addEventListener("click", function (e) {
       if (e.target.innerHTML == "Saved Price Rule") {
         document.getElementById("save-price-rule-table").style.display =
-          "block";
+          "table";
         document.getElementById("add-price-rule-table").style.display = "none";
         e.target.parentNode.previousElementSibling.children[0].classList.remove(
           "active"
@@ -192,7 +192,7 @@ var UTIL = (function (domU) {
         e.target.classList.add("active");
       }
       if (e.target.innerHTML == "Add Price Rule") {
-        document.getElementById("add-price-rule-table").style.display = "block";
+        document.getElementById("add-price-rule-table").style.display = "table";
         document.getElementById("save-price-rule-table").style.display = "none";
         e.target.parentNode.nextElementSibling.children[0].classList.remove(
           "active"
