@@ -18,16 +18,16 @@ class Store {
 
   static removePriceRules(priceRuleNumber) {
     const priceRules = Store.getPriceRules();
+    var priceRuleArr = Object.values(priceRules[0]);
 
-    console.log(priceRules, "check pricerule...");
-
-    priceRules.forEach((priceRule, index) => {
-      if (priceRule.priceRuleNumber == priceRuleNumber) {
-        // priceRuleNumber.splice(index, 1);
+    priceRuleArr.forEach((priceRule, index) => {
+      if (index == priceRuleNumber) {
+        priceRuleArr.splice(index, 1);
       }
     });
-
-    localStorage.setItem("priceRules", JSON.stringify(priceRules));
+    var updatedPriceRules = [];
+    updatedPriceRules.push(priceRuleArr);
+    localStorage.setItem("priceRules", JSON.stringify(updatedPriceRules));
   }
 }
 
