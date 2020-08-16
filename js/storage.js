@@ -11,19 +11,17 @@ class Store {
     return priceRules;
   }
 
-  static addPriceRules(priceRule) {
-    console.log(priceRule, "check priceRule");
+  static addPriceRules(priceRuleValues) {
     const priceRules = Store.getPriceRules();
     let priceRulesLength = Object.keys(priceRules).length;
-    const priceRuleValues = Object.values(priceRule);
-
     var updatedPriceRule = {};
-    priceRuleValues.forEach((value, key) => {
+    priceRuleValues.forEach((value) => {
       updatedPriceRule[priceRulesLength] = value;
       priceRulesLength++;
     });
     const allPriceRules = { ...priceRules, ...updatedPriceRule };
     localStorage.setItem("priceRules", JSON.stringify(allPriceRules));
+    UI.showAlert("Price Rules are saved successfully", "success");
   }
 
   static removePriceRules(priceRuleNumber) {
@@ -71,6 +69,18 @@ class UI {
     if (el.classList.contains("delete-row")) {
       el.parentNode.parentNode.remove();
     }
+  }
+
+  static showAlert(message, className) {
+    const div = document.createElement("div");
+    div.className = `alert alert-${className}`;
+    div.appendChild(document.createTextNode(message));
+    const cardBody = document.querySelector(".card-body");
+    const form = document.querySelector("#price-rules-form");
+    cardBody.insertBefore(div, form);
+
+    //vanish alert message in 3 seconds
+    setTimeout(() => document.querySelector(".alert").remove(), 3000);
   }
 }
 

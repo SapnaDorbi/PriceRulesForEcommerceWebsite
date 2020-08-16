@@ -21,7 +21,6 @@ var UTIL = (function (domU) {
 
   var createHtML = function (index) {
     var tbody = document.getElementById("price-rules");
-    console.log(tbody, "check tbody");
     var row = document.createElement("tr");
     var th = document.querySelectorAll(".add-price-rule-heading"),
       thLength = th.length;
@@ -222,15 +221,23 @@ var UTIL = (function (domU) {
       /*Another way of using FormData end*/
 
       const formData = new FormData(document.querySelector("form"));
-      const object = {};
+      const currentPriceRules = {};
       formData.forEach((value, key) => {
         const [, index, attr] = /(^\d+)\[(.*?)\]/.exec(key);
-        if (!(index in object)) {
-          object[index] = {};
+        if (!(index in currentPriceRules)) {
+          currentPriceRules[index] = {};
         }
-        object[index][attr] = value;
+        currentPriceRules[index][attr] = value;
       });
-      //Add price to local storage
-      Store.addPriceRules(object);
+
+      const priceRuleValues = Object.values(currentPriceRules);
+
+      if (priceRuleValues.length == 0) {
+        UI.showAlert("Please add atleast one rule", "danger");
+      } else {
+        //Add price to local storage
+        Store.addPriceRules(priceRuleValues);
+      }
+      e.target.children[0].children[1].innerHTML = "";
     });
 })(UTIL || {});
