@@ -4,6 +4,7 @@ class Store {
     let priceRules;
     if (localStorage.getItem("priceRules") === null) {
       priceRules = [];
+      // priceRules = false;
     } else {
       priceRules = JSON.parse(localStorage.getItem("priceRules"));
     }
@@ -11,9 +12,18 @@ class Store {
   }
 
   static addPriceRules(priceRule) {
+    console.log(priceRule, "check priceRule");
     const priceRules = Store.getPriceRules();
-    priceRules.push(priceRule);
-    localStorage.setItem("priceRules", JSON.stringify(priceRules));
+    let priceRulesLength = Object.keys(priceRules).length;
+    const priceRuleValues = Object.values(priceRule);
+
+    var updatedPriceRule = {};
+    priceRuleValues.forEach((value, key) => {
+      updatedPriceRule[priceRulesLength] = value;
+      priceRulesLength++;
+    });
+    const allPriceRules = { ...priceRules, ...updatedPriceRule };
+    localStorage.setItem("priceRules", JSON.stringify(allPriceRules));
   }
 
   static removePriceRules(priceRuleNumber) {
