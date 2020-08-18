@@ -4,7 +4,6 @@ class Store {
     let priceRules;
     if (localStorage.getItem("priceRules") === null) {
       priceRules = [];
-      // priceRules = false;
     } else {
       priceRules = JSON.parse(localStorage.getItem("priceRules"));
     }
