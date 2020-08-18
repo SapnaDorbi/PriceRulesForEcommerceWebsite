@@ -26,16 +26,9 @@ class Store {
 
   static removePriceRules(priceRuleNumber) {
     const priceRules = Store.getPriceRules();
-    var priceRuleArr = Object.values(priceRules[0]);
-
-    priceRuleArr.forEach((priceRule, index) => {
-      if (index == priceRuleNumber) {
-        priceRuleArr.splice(index, 1);
-      }
-    });
-    var updatedPriceRules = [];
-    updatedPriceRules.push(priceRuleArr);
-    localStorage.setItem("priceRules", JSON.stringify(updatedPriceRules));
+    var updatedPriceRules = delete priceRules[priceRuleNumber - 1];
+    localStorage.setItem("priceRules", JSON.stringify(priceRules));
+    UI.showAlert("Price Rules are deleted successfully", "success");
   }
 }
 
@@ -43,8 +36,9 @@ class Store {
 class UI {
   static displaySavePriceRules() {
     const savedPriceRules = Store.getPriceRules();
-    if (savedPriceRules.length > 0) {
-      Object.values(savedPriceRules[0]).forEach((savedPriceRule, key) => {
+    const savedPriceRulesLength = Object.values(savedPriceRules).length;
+    if (savedPriceRulesLength > 0) {
+      Object.values(savedPriceRules).forEach((savedPriceRule, key) => {
         UI.addPriceRuleToList(savedPriceRule, key + 1);
       });
     }
